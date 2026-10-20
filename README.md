@@ -42,5 +42,19 @@ Python, Google Colab, Pandas, NumPy, Scikit-learn, TensorFlow/Keras.
 - `en_tokenizer.pkl`
 - `preprocessed_data.npz`
 
-## Project Status
-Dataset preprocessing is completed. Encoder–Decoder model development and translation evaluation will be documented as the project progresses.
+## Fathima's Contribution — Model Development and Evaluation
+
+I developed and evaluated Malayalam-to-English sequence-to-sequence translation models using TensorFlow/Keras and the preprocessed dataset.
+
+**Model development:**
+
+- Built and trained a baseline LSTM encoder–decoder model.
+- Built and trained an attention-based encoder–decoder model using additive (Bahdanau-style) attention.
+- Used the Malayalam and English tokenizers from the preprocessing stage, adding start and end tokens to English decoder sequences.
+- Saved the trained attention model weights as `attention.weights.h5`.
+
+**Evaluation:**
+
+- Evaluated the models on the validation set using loss and token accuracy, including masked accuracy that excludes padding tokens.
+- Compared baseline and attention model training histories using loss and accuracy plots.
+- Tested sample translations using greedy, word-by-word decoding.
