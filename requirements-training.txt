@@ -1,0 +1,6 @@
+--extra-index-url https://download.pytorch.org/whl/cu126
+torch==2.7.1+cu126
+transformers>=4.46,<5
+accelerate>=0.26.0
+sacrebleu
+sentencepiece
