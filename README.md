@@ -58,3 +58,36 @@ I developed and evaluated Malayalam-to-English sequence-to-sequence translation 
 - Evaluated the models on the validation set using loss and token accuracy, including masked accuracy that excludes padding tokens.
 - Compared baseline and attention model training histories using loss and accuracy plots.
 - Tested sample translations using greedy, word-by-word decoding.
+
+  ## Fine-Tuned OPUS-MT Malayalam-to-English Model
+
+In addition to the LSTM models, this project fine-tunes the pretrained
+[Helsinki-NLP/opus-mt-ml-en](https://huggingface.co/Helsinki-NLP/opus-mt-ml-en)
+model for Malayalam-to-English translation. Fine-tuning adapts the pretrained
+translation model using the project’s Malayalam-English sentence pairs.
+
+### Training
+
+The model was fine-tuned using `data/train.csv` and evaluated during training
+using `data/validation.csv`. Both files contain `malayalam` and `english`
+columns. Training ran for 3 epochs with a batch size of 8, a learning rate of
+`5e-5`, and maximum source and target sequence lengths of 128 tokens.
+
+The final reported validation metrics were:
+
+| Metric | Result |
+|---|---:|
+| Validation BLEU | 27.57 |
+| Validation loss | 1.866 |
+
+BLEU measures how closely generated translations match reference translations;
+it is **not an accuracy percentage**. These results are from the validation
+set, not the held-out test set.
+
+### Running the interactive translator
+
+After installing the required PyTorch and Transformers dependencies and placing
+the saved model in `opus_mt_finetuned/`, run:
+
+```bash
+python translate_opus_mt.py
